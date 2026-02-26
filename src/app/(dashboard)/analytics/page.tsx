@@ -43,16 +43,16 @@ export default function AnalyticsPage() {
     return (
         <div className="max-w-[1400px] space-y-6">
             <div className="mb-2">
-                <h1 className="text-lg font-semibold text-zinc-100">Analytics</h1>
+                <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Analytics</h1>
                 <p className="text-xs text-zinc-500 mt-0.5">Performance insights for 2024</p>
             </div>
 
             {/* Revenue & Orders dual chart */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
             >
-                <h2 className="text-sm font-semibold text-zinc-100 mb-1">Revenue & Orders</h2>
+                <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">Revenue & Orders</h2>
                 <p className="text-xs text-zinc-500 mb-5">Monthly trend over 12 months</p>
                 {isLoading ? (
                     <div className="h-56 shimmer rounded-lg" />
@@ -92,9 +92,9 @@ export default function AnalyticsPage() {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-                    className="bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
                 >
-                    <h2 className="text-sm font-semibold text-zinc-100 mb-1">Orders by Status</h2>
+                    <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">Orders by Status</h2>
                     <p className="text-xs text-zinc-500 mb-5">Fulfillment distribution</p>
                     <ResponsiveContainer width="100%" height={220}>
                         <PieChart>
@@ -125,9 +125,9 @@ export default function AnalyticsPage() {
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-                    className="bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
                 >
-                    <h2 className="text-sm font-semibold text-zinc-100 mb-1">Traffic Sources</h2>
+                    <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">Traffic Sources</h2>
                     <p className="text-xs text-zinc-500 mb-5">Visits by acquisition channel</p>
                     <ResponsiveContainer width="100%" height={220}>
                         <BarChart data={TRAFFIC_DATA} margin={{ top: 0, right: 0, bottom: 0, left: -20 }}>
@@ -148,9 +148,9 @@ export default function AnalyticsPage() {
             {/* Customer Growth */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
             >
-                <h2 className="text-sm font-semibold text-zinc-100 mb-1">Customer Growth</h2>
+                <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">Customer Growth</h2>
                 <p className="text-xs text-zinc-500 mb-5">New customers per month</p>
                 {isLoading ? (
                     <div className="h-44 shimmer rounded-lg" />

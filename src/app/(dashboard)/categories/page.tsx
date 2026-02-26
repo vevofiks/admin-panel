@@ -76,21 +76,21 @@ export default function CategoriesPage() {
             accessorKey: "name",
             header: "Name",
             cell: ({ row }) => (
-                <span className="text-sm font-medium text-zinc-200">{row.original.name}</span>
+                <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{row.original.name}</span>
             )
         },
         {
             accessorKey: "description",
             header: "Description",
             cell: ({ row }) => (
-                <span className="text-sm text-zinc-400">{row.original.description || "N/A"}</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">{row.original.description || "N/A"}</span>
             )
         },
         {
             accessorKey: "createdAt",
             header: "Created",
             cell: ({ row }) => (
-                <span className="text-sm text-zinc-400">{formatRelativeTime(row.original.createdAt)}</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">{formatRelativeTime(row.original.createdAt)}</span>
             )
         },
         {
@@ -100,7 +100,7 @@ export default function CategoriesPage() {
                 <div className="flex justify-end pr-4">
                     <button
                         onClick={() => handleDelete(row.original._id)}
-                        className="text-xs text-red-500 hover:text-red-400 px-3 py-1.5 rounded-md hover:bg-zinc-800 transition-colors"
+                        className="text-xs text-red-500 hover:text-red-400 px-3 py-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                     >
                         Delete
                     </button>
@@ -113,7 +113,7 @@ export default function CategoriesPage() {
         <div className="max-w-[1400px]">
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-lg font-semibold text-zinc-100">Categories</h1>
+                    <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Categories</h1>
                     <p className="text-xs text-zinc-500 mt-0.5">{categories.length} categories</p>
                 </div>
                 <button
@@ -125,15 +125,15 @@ export default function CategoriesPage() {
             </div>
 
             {isFormOpen && (
-                <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 mb-6">
-                    <h2 className="text-sm font-medium text-zinc-100 mb-4">New Category</h2>
+                <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 mb-6">
+                    <h2 className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-4">New Category</h2>
                     <form onSubmit={handleSubmit} className="flex gap-4">
                         <input
                             type="text"
                             placeholder="Category Name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="flex-1 bg-zinc-950 border border-zinc-800 text-sm text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500"
+                            className="flex-1 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-800 dark:text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500"
                             required
                         />
                         <input
@@ -141,7 +141,7 @@ export default function CategoriesPage() {
                             placeholder="Description"
                             value={formData.description}
                             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                            className="flex-1 bg-zinc-950 border border-zinc-800 text-sm text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500"
+                            className="flex-1 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-800 dark:text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500"
                         />
                         <button
                             type="submit"

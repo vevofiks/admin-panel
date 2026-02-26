@@ -109,8 +109,8 @@ export function DataTable<TData, TValue>({
                         value={globalFilter}
                         onChange={(e) => setGlobalFilter(e.target.value)}
                         placeholder={searchPlaceholder}
-                        className="w-full pl-8 pr-4 py-2 text-sm bg-zinc-900 border border-zinc-800 rounded-lg
-              text-zinc-200 placeholder-zinc-600 outline-none focus:border-indigo-500/50 focus:ring-1
+                        className="w-full pl-8 pr-4 py-2 text-sm bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg
+              text-zinc-800 dark:text-zinc-200 placeholder-zinc-600 outline-none focus:border-indigo-500/50 focus:ring-1
               focus:ring-indigo-500/20 transition-all"
                     />
                 </div>
@@ -120,8 +120,8 @@ export function DataTable<TData, TValue>({
                     <div className="relative">
                         <button
                             onClick={() => setShowColumnToggle((o) => !o)}
-                            className="flex items-center gap-1.5 px-3 py-2 text-xs text-zinc-400 border border-zinc-800
-                bg-zinc-900 rounded-lg hover:bg-zinc-800 hover:text-zinc-200 transition-all"
+                            className="flex items-center gap-1.5 px-3 py-2 text-xs text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800
+                bg-white dark:bg-zinc-900 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-all"
                         >
                             <Settings2 size={13} />
                             <span>Columns</span>
@@ -133,15 +133,15 @@ export function DataTable<TData, TValue>({
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: -8, scale: 0.95 }}
                                     transition={{ duration: 0.12 }}
-                                    className="absolute right-0 top-full mt-1 z-10 min-w-40 bg-zinc-900 border border-zinc-800
+                                    className="absolute right-0 top-full mt-1 z-10 min-w-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800
                     rounded-xl shadow-2xl p-2"
                                 >
                                     {table.getAllColumns().filter((c) => c.getCanHide()).map((col) => (
                                         <button
                                             key={col.id}
                                             onClick={() => col.toggleVisibility()}
-                                            className="flex items-center gap-2 w-full px-2 py-1.5 hover:bg-zinc-800 rounded-lg
-                        text-xs text-zinc-400 hover:text-zinc-200 transition-colors capitalize"
+                                            className="flex items-center gap-2 w-full px-2 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg
+                        text-xs text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors capitalize"
                                         >
                                             {col.getIsVisible() ? <Eye size={12} /> : <EyeOff size={12} />}
                                             {col.id}
@@ -156,16 +156,16 @@ export function DataTable<TData, TValue>({
                     <div className="flex items-center gap-1">
                         <button
                             onClick={exportCSV}
-                            className="flex items-center gap-1.5 px-3 py-2 text-xs text-zinc-400 border border-zinc-800
-                bg-zinc-900 rounded-lg hover:bg-zinc-800 hover:text-zinc-200 transition-all"
+                            className="flex items-center gap-1.5 px-3 py-2 text-xs text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800
+                bg-white dark:bg-zinc-900 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-all"
                         >
                             <Download size={13} />
                             <span>CSV</span>
                         </button>
                         <button
                             onClick={exportJSON}
-                            className="flex items-center gap-1.5 px-3 py-2 text-xs text-zinc-400 border border-zinc-800
-                bg-zinc-900 rounded-lg hover:bg-zinc-800 hover:text-zinc-200 transition-all"
+                            className="flex items-center gap-1.5 px-3 py-2 text-xs text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800
+                bg-white dark:bg-zinc-900 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200 transition-all"
                         >
                             <Download size={13} />
                             <span>JSON</span>
@@ -175,12 +175,12 @@ export function DataTable<TData, TValue>({
             </div>
 
             {/* Table */}
-            <div className="rounded-xl border border-zinc-800 overflow-hidden bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-white/50 dark:bg-zinc-900/50">
                 <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                         <thead>
                             {table.getHeaderGroups().map((headerGroup) => (
-                                <tr key={headerGroup.id} className="border-b border-zinc-800 bg-zinc-900/80">
+                                <tr key={headerGroup.id} className="border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80">
                                     {headerGroup.headers.map((header) => (
                                         <th
                                             key={header.id}
@@ -190,7 +190,7 @@ export function DataTable<TData, TValue>({
                                                 <div
                                                     className={cn(
                                                         "flex items-center gap-1.5",
-                                                        header.column.getCanSort() && "cursor-pointer hover:text-zinc-300 select-none transition-colors"
+                                                        header.column.getCanSort() && "cursor-pointer hover:text-zinc-700 dark:hover:text-zinc-300 select-none transition-colors"
                                                     )}
                                                     onClick={header.column.getToggleSortingHandler()}
                                                 >
@@ -223,10 +223,10 @@ export function DataTable<TData, TValue>({
                                             key={row.id}
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
-                                            className="border-b border-zinc-800/50 hover:bg-zinc-800/40 transition-colors"
+                                            className="border-b border-zinc-200/50 dark:border-zinc-800/50 hover:bg-zinc-100/40 dark:hover:bg-zinc-800/40 transition-colors"
                                         >
                                             {row.getVisibleCells().map((cell) => (
-                                                <td key={cell.id} className="px-4 py-3 text-zinc-300 whitespace-nowrap">
+                                                <td key={cell.id} className="px-4 py-3 text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
                                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                                 </td>
                                             ))}
@@ -257,10 +257,10 @@ export function DataTable<TData, TValue>({
                             onClick={btn.action}
                             disabled={btn.disabled}
                             className={cn(
-                                "p-1.5 rounded-lg border border-zinc-800 text-zinc-400 transition-all",
+                                "p-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 transition-all",
                                 btn.disabled
                                     ? "opacity-30 cursor-not-allowed"
-                                    : "hover:bg-zinc-800 hover:text-zinc-200"
+                                    : "hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-800 dark:hover:text-zinc-200"
                             )}
                         >
                             {btn.icon}

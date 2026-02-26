@@ -37,7 +37,7 @@ const columns: ColumnDef<UnifiedOrder>[] = [
                 <img src={row.original.customer.avatarUrl} alt={row.original.customer.name}
                     className="w-7 h-7 rounded-full object-cover" />
                 <div>
-                    <p className="text-sm text-zinc-200">{row.original.customer.name}</p>
+                    <p className="text-sm text-zinc-800 dark:text-zinc-200">{row.original.customer.name}</p>
                     <p className="text-xs text-zinc-600">{row.original.customer.email}</p>
                 </div>
             </div>
@@ -47,14 +47,14 @@ const columns: ColumnDef<UnifiedOrder>[] = [
         id: "date",
         header: "Date",
         cell: ({ row }) => (
-            <span className="text-sm text-zinc-400">{formatDate(row.original.createdAt)}</span>
+            <span className="text-sm text-zinc-600 dark:text-zinc-400">{formatDate(row.original.createdAt)}</span>
         ),
     },
     {
         id: "location",
         header: "Location",
         cell: ({ row }) => (
-            <span className="text-sm text-zinc-400">
+            <span className="text-sm text-zinc-600 dark:text-zinc-400">
                 {row.original.shippingAddress.city}, {row.original.shippingAddress.country}
             </span>
         ),
@@ -87,7 +87,7 @@ const columns: ColumnDef<UnifiedOrder>[] = [
         accessorKey: "total",
         header: "Total",
         cell: ({ getValue }) => (
-            <span className="text-sm font-semibold text-zinc-200">{formatCurrency(getValue<number>())}</span>
+            <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">{formatCurrency(getValue<number>())}</span>
         ),
     },
 ];
@@ -98,7 +98,7 @@ export default function OrdersPage() {
         <div className="max-w-[1400px]">
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-lg font-semibold text-zinc-100">Orders</h1>
+                    <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Orders</h1>
                     <p className="text-xs text-zinc-500 mt-0.5">{data?.length ?? 0} orders total</p>
                 </div>
                 <button className="px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors">

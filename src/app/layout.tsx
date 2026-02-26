@@ -4,10 +4,11 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import panelConfig from "@/config/panel.config";
 
 export const metadata: Metadata = {
-  title: "Nexus AI – Universal eCommerce Admin",
-  description: "Mission Control for your eCommerce ecosystem. Manage Shopify, MedusaJS, and custom stores from one unified interface.",
+  title: panelConfig.metadata.title,
+  description: panelConfig.metadata.description,
 };
 
 export default function RootLayout({

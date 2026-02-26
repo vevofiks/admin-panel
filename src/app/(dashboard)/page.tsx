@@ -2,6 +2,7 @@
 
 import { useKPI, useUnifiedOrders, useUnifiedProducts, useAnalytics } from "@/core/hooks/useUnifiedData";
 import { formatCurrency, formatRelativeTime, cn } from "@/lib/utils";
+import { UnifiedProduct, UnifiedProductVariant, UnifiedOrder } from "@/types/unified";
 import {
     TrendingUp, TrendingDown, DollarSign, ShoppingCart, Users, BarChart3,
     Package, ArrowRight,
@@ -32,12 +33,12 @@ function KPICard({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.07, duration: 0.4 }}
-            className="bg-zinc-900 border border-zinc-800 rounded-xl p-5 hover:border-zinc-700 transition-colors"
+            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
         >
             <div className="flex items-start justify-between">
                 <div>
                     <p className="text-xs text-zinc-500 font-medium">{title}</p>
-                    <p className="text-2xl font-semibold text-zinc-100 mt-1.5 tracking-tight">
+                    <p className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mt-1.5 tracking-tight">
                         {prefix}{typeof value === "number" ? value.toLocaleString() : value}
                     </p>
                 </div>
@@ -62,7 +63,7 @@ function KPICard({
 
 function KPICardSkeleton() {
     return (
-        <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-5">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5">
             <div className="flex items-start justify-between">
                 <div className="space-y-2 flex-1">
                     <div className="h-3 w-24 rounded shimmer" />
@@ -83,7 +84,7 @@ export default function DashboardPage() {
 
     const recentOrders = orders?.slice(0, 5) || [];
     const lowStockProducts = products
-        ?.filter((p) => p.variants.some((v) => v.stock < 20))
+        ?.filter((p: UnifiedProduct) => p.variants.some((v: UnifiedProductVariant) => v.stock < 20))
         .slice(0, 4) || [];
 
     return (
@@ -109,11 +110,11 @@ export default function DashboardPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="xl:col-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                    className="xl:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
                 >
                     <div className="flex items-center justify-between mb-6">
                         <div>
-                            <h2 className="text-sm font-semibold text-zinc-100">Revenue Overview</h2>
+                            <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Revenue Overview</h2>
                             <p className="text-xs text-zinc-500">12-month performance</p>
                         </div>
                         <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-full">2024</span>
@@ -151,10 +152,10 @@ export default function DashboardPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.35 }}
-                    className="bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
                 >
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-sm font-semibold text-zinc-100">Recent Orders</h2>
+                        <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Recent Orders</h2>
                         <Link href="/orders" className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors">
                             View all <ArrowRight size={11} />
                         </Link>
@@ -171,7 +172,7 @@ export default function DashboardPage() {
                                     <div className="h-5 w-14 rounded-full shimmer" />
                                 </div>
                             ))
-                            : recentOrders.map((order) => (
+                            : recentOrders.map((order: UnifiedOrder) => (
                                 <div key={order.id} className="flex items-center gap-3">
                                     <img
                                         src={order.customer.avatarUrl}
@@ -179,7 +180,7 @@ export default function DashboardPage() {
                                         className="w-7 h-7 rounded-full object-cover shrink-0"
                                     />
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs font-medium text-zinc-300 truncate">{order.customer.name}</p>
+                                        <p className="text-xs font-medium text-zinc-700 dark:text-zinc-300 truncate">{order.customer.name}</p>
                                         <p className="text-[10px] text-zinc-600">{order.orderNumber} · {formatRelativeTime(order.createdAt)}</p>
                                     </div>
                                     <span className={cn("text-[10px] font-medium px-2 py-0.5 rounded-full border", statusColors[order.status])}>
@@ -196,11 +197,11 @@ export default function DashboardPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="bg-zinc-900 border border-zinc-800 rounded-xl p-5"
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5"
             >
                 <div className="flex items-center justify-between mb-4">
                     <div>
-                        <h2 className="text-sm font-semibold text-zinc-100">Low Stock Alert</h2>
+                        <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Low Stock Alert</h2>
                         <p className="text-xs text-zinc-500">Products with less than 20 units</p>
                     </div>
                     <Link href="/products" className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors">
@@ -210,7 +211,7 @@ export default function DashboardPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
                     {productsLoading
                         ? Array.from({ length: 4 }).map((_, i) => (
-                            <div key={i} className="flex items-center gap-3 p-3 bg-zinc-800/50 rounded-lg">
+                            <div key={i} className="flex items-center gap-3 p-3 bg-zinc-100/50 dark:bg-zinc-800/50 rounded-lg">
                                 <div className="w-10 h-10 rounded-lg shimmer shrink-0" />
                                 <div className="space-y-1.5 flex-1">
                                     <div className="h-3 w-full rounded shimmer" />
@@ -218,14 +219,14 @@ export default function DashboardPage() {
                                 </div>
                             </div>
                         ))
-                        : lowStockProducts.map((product) => {
-                            const minStock = Math.min(...product.variants.map((v) => v.stock));
+                        : lowStockProducts.map((product: UnifiedProduct) => {
+                            const minStock = Math.min(...product.variants.map((v: UnifiedProductVariant) => v.stock));
                             return (
-                                <div key={product.id} className="flex items-center gap-3 p-3 bg-zinc-800/50 rounded-lg hover:bg-zinc-800 transition-colors">
+                                <div key={product.id} className="flex items-center gap-3 p-3 bg-zinc-100/50 dark:bg-zinc-800/50 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
                                     <img src={product.imageUrl} alt={product.title}
-                                        className="w-10 h-10 rounded-lg object-cover shrink-0 bg-zinc-700" />
+                                        className="w-10 h-10 rounded-lg object-cover shrink-0 bg-zinc-200 dark:bg-zinc-700" />
                                     <div className="min-w-0">
-                                        <p className="text-xs font-medium text-zinc-300 truncate">{product.title}</p>
+                                        <p className="text-xs font-medium text-zinc-700 dark:text-zinc-300 truncate">{product.title}</p>
                                         <div className="flex items-center gap-1.5 mt-0.5">
                                             <Package size={10} className={cn(minStock === 0 ? "text-red-500" : "text-amber-500")} />
                                             <span className={cn("text-[10px] font-semibold", minStock === 0 ? "text-red-500" : "text-amber-500")}>

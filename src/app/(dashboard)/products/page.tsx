@@ -45,10 +45,10 @@ const statusClass: Record<string, string> = {
 };
 
 const inputCls =
-    "w-full bg-zinc-950 border border-zinc-800 text-sm text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 transition-colors placeholder:text-zinc-600";
+    "w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-800 dark:text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 transition-colors placeholder:text-zinc-600";
 
 const selectCls =
-    "w-full bg-zinc-950 border border-zinc-800 text-sm text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 transition-colors";
+    "w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-800 dark:text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 transition-colors";
 
 export default function ProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -133,14 +133,14 @@ export default function ProductsPage() {
                 return (
                     <div className="flex items-center gap-3">
                         {p.image ? (
-                            <img src={p.image} alt={p.name} className="w-10 h-10 rounded-lg object-cover bg-zinc-800" />
+                            <img src={p.image} alt={p.name} className="w-10 h-10 rounded-lg object-cover bg-zinc-100 dark:bg-zinc-800" />
                         ) : (
-                            <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
                                 <Package size={16} className="text-zinc-600" />
                             </div>
                         )}
                         <div>
-                            <p className="text-sm font-medium text-zinc-200">{p.name}</p>
+                            <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{p.name}</p>
                         </div>
                     </div>
                 );
@@ -150,7 +150,7 @@ export default function ProductsPage() {
             accessorKey: "category",
             header: "Category",
             cell: ({ row }) => (
-                <span className="text-xs text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded-full">
+                <span className="text-xs text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full">
                     {row.original.category?.name || "Uncategorized"}
                 </span>
             ),
@@ -159,7 +159,7 @@ export default function ProductsPage() {
             accessorKey: "basePrice",
             header: "Base Price",
             cell: ({ row }) => (
-                <span className="text-sm font-medium text-zinc-200">{formatCurrency(row.original.basePrice)}</span>
+                <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{formatCurrency(row.original.basePrice)}</span>
             ),
         },
         {
@@ -178,7 +178,7 @@ export default function ProductsPage() {
             id: "variants",
             header: "Variants",
             cell: ({ row }) => (
-                <span className="text-sm text-zinc-400">{row.original.variants?.length || 0}</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">{row.original.variants?.length || 0}</span>
             ),
         },
         {
@@ -200,13 +200,13 @@ export default function ProductsPage() {
                 <div className="flex justify-end gap-2 pr-4">
                     <button
                         onClick={() => setSelectedProductForVariants(row.original)}
-                        className="text-xs text-indigo-400 hover:text-indigo-300 px-3 py-1.5 rounded-md hover:bg-zinc-800 transition-colors flex items-center gap-1"
+                        className="text-xs text-indigo-400 hover:text-indigo-300 px-3 py-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1"
                     >
                         <Plus size={12} /> Variants
                     </button>
                     <button
                         onClick={() => handleDelete(row.original._id)}
-                        className="text-xs text-red-500 hover:text-red-400 px-3 py-1.5 rounded-md hover:bg-zinc-800 transition-colors"
+                        className="text-xs text-red-500 hover:text-red-400 px-3 py-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                     >
                         Delete
                     </button>
@@ -220,7 +220,7 @@ export default function ProductsPage() {
             {/* Page header */}
             <div className="flex items-center justify-between mb-6">
                 <div>
-                    <h1 className="text-lg font-semibold text-zinc-100">Products</h1>
+                    <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Products</h1>
                     <p className="text-xs text-zinc-500 mt-0.5">{products.length} products</p>
                 </div>
                 <button
@@ -356,7 +356,7 @@ export default function ProductsPage() {
                                     setIsFormOpen(false);
                                     resetForm();
                                 }}
-                                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 rounded-lg transition-colors"
+                                className="px-4 py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
                             >
                                 Cancel
                             </button>

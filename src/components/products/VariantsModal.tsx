@@ -22,7 +22,7 @@ interface VariantsModalProps {
     onUpdate: () => void;
 }
 
-const inputCls = "w-full bg-zinc-950 border border-zinc-800 text-sm text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 transition-colors placeholder:text-zinc-600";
+const inputCls = "w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 text-sm text-zinc-800 dark:text-zinc-200 rounded-lg px-3 py-2 outline-none focus:border-indigo-500 transition-colors placeholder:text-zinc-600";
 
 export function VariantsModal({ product, isOpen, onClose, onUpdate }: VariantsModalProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,22 +87,22 @@ export function VariantsModal({ product, isOpen, onClose, onUpdate }: VariantsMo
                     <div className="space-y-2">
                         <Label>Current Variants ({product.variants.length})</Label>
                         {product.variants.length === 0 ? (
-                            <div className="text-sm text-zinc-500 py-3 text-center border border-zinc-800/50 border-dashed rounded-lg">
+                            <div className="text-sm text-zinc-500 py-3 text-center border border-zinc-200/50 dark:border-zinc-800/50 border-dashed rounded-lg">
                                 No variants found. Add one below.
                             </div>
                         ) : (
                             <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
                                 {product.variants.map(v => (
-                                    <div key={v._id} className="flex items-center justify-between p-3 rounded-lg bg-zinc-900 border border-zinc-800">
+                                    <div key={v._id} className="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                                         <div>
-                                            <p className="text-sm font-medium text-zinc-200">{v.name}</p>
+                                            <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{v.name}</p>
                                             <p className="text-xs text-zinc-500 mt-0.5">
                                                 Price Adj: {v.priceAdjustment > 0 ? "+" : ""}{v.priceAdjustment}
                                             </p>
                                         </div>
                                         <button
                                             onClick={() => handleDelete(v._id)}
-                                            className="text-zinc-500 hover:text-red-500 p-1.5 rounded-md hover:bg-zinc-800 transition-colors"
+                                            className="text-zinc-500 hover:text-red-500 p-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                                             title="Delete variant"
                                         >
                                             <Trash2 size={14} />
@@ -113,7 +113,7 @@ export function VariantsModal({ product, isOpen, onClose, onUpdate }: VariantsMo
                         )}
                     </div>
 
-                    <hr className="border-zinc-800" />
+                    <hr className="border-zinc-200 dark:border-zinc-800" />
 
                     {/* Add New Variant Form */}
                     <form onSubmit={handleCreate} className="space-y-4">
@@ -139,7 +139,7 @@ export function VariantsModal({ product, isOpen, onClose, onUpdate }: VariantsMo
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full py-2 text-sm font-medium bg-zinc-800 hover:bg-zinc-700 disabled:opacity-50 text-white rounded-lg transition-colors border border-zinc-700"
+                            className="w-full py-2 text-sm font-medium bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 disabled:opacity-50 text-white rounded-lg transition-colors border border-zinc-300 dark:border-zinc-700"
                         >
                             {isSubmitting ? "Adding..." : "Add Variant"}
                         </button>

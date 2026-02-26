@@ -87,14 +87,14 @@ export default function VariantsPage() {
             accessorKey: "name",
             header: "Name",
             cell: ({ row }) => (
-                <span className="text-sm font-medium text-zinc-200">{row.original.name}</span>
+                <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{row.original.name}</span>
             )
         },
         {
             accessorKey: "product",
             header: "Product",
             cell: ({ row }) => (
-                <span className="text-sm text-zinc-400">{row.original.product?.name || "N/A"}</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">{row.original.product?.name || "N/A"}</span>
             )
         },
         {
@@ -103,7 +103,7 @@ export default function VariantsPage() {
             cell: ({ row }) => {
                 const adj = row.original.priceAdjustment;
                 return (
-                    <span className={`text-sm ${adj > 0 ? "text-emerald-500" : adj < 0 ? "text-red-500" : "text-zinc-400"}`}>
+                    <span className={`text-sm ${adj > 0 ? "text-emerald-500" : adj < 0 ? "text-red-500" : "text-zinc-600 dark:text-zinc-400"}`}>
                         {adj > 0 ? "+" : ""}{adj}
                     </span>
                 );
@@ -113,7 +113,7 @@ export default function VariantsPage() {
             accessorKey: "createdAt",
             header: "Created",
             cell: ({ row }) => (
-                <span className="text-sm text-zinc-400">{formatRelativeTime(row.original.createdAt)}</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">{formatRelativeTime(row.original.createdAt)}</span>
             )
         },
     ];

@@ -22,12 +22,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     }, [setCommandBarOpen]);
 
     return (
-        <div className="flex h-screen w-full overflow-hidden bg-zinc-950 text-zinc-50">
+        <div className="flex h-screen w-full overflow-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-50">
             <Sidebar />
             <div
                 className={cn(
                     "flex flex-col flex-1 min-w-0 transition-all duration-300 ease-in-out",
-                    sidebarCollapsed ? "ml-[68px]" : "ml-[300px]"
+                    "ml-0", // mobile default
+                    sidebarCollapsed ? "md:ml-[68px]" : "md:ml-[260px]"
                 )}
             >
                 <Topbar />

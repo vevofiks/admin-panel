@@ -94,21 +94,21 @@ export function CommandBar() {
                     exit={{ opacity: 0, y: -20, scale: 0.96 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
                     onClick={(e) => e.stopPropagation()}
-                    className="w-full max-w-lg mx-4 bg-zinc-900 border border-zinc-700 rounded-2xl shadow-2xl overflow-hidden"
+                    className="w-full max-w-lg mx-4 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-2xl shadow-2xl overflow-hidden"
                 >
                     {/* Search Input */}
-                    <div className="flex items-center gap-3 px-4 py-3.5 border-b border-zinc-800">
+                    <div className="flex items-center gap-3 px-4 py-3.5 border-b border-zinc-200 dark:border-zinc-800">
                         <Search size={16} className="text-zinc-500 shrink-0" />
                         <input
                             ref={inputRef}
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Search commands, pages, or stores..."
-                            className="flex-1 bg-transparent text-sm text-zinc-100 placeholder-zinc-500 outline-none"
+                            className="flex-1 bg-transparent text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-500 outline-none"
                         />
                         <div className="flex items-center gap-1.5">
-                            <kbd className="bg-zinc-800 px-1.5 py-0.5 rounded text-[10px] font-mono text-zinc-500">ESC</kbd>
-                            <button onClick={() => setCommandBarOpen(false)} className="p-1 hover:bg-zinc-800 rounded-md transition-colors">
+                            <kbd className="bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px] font-mono text-zinc-500">ESC</kbd>
+                            <button onClick={() => setCommandBarOpen(false)} className="p-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md transition-colors">
                                 <X size={12} className="text-zinc-500" />
                             </button>
                         </div>
@@ -130,16 +130,16 @@ export function CommandBar() {
                                             <button
                                                 key={cmd.id}
                                                 onClick={cmd.action}
-                                                className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-zinc-800 transition-colors text-left group"
+                                                className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-left group"
                                             >
                                                 <span className="text-zinc-500 group-hover:text-indigo-400 transition-colors">{cmd.icon}</span>
                                                 <div className="flex-1 min-w-0">
-                                                    <p className="text-sm text-zinc-200 truncate">{cmd.label}</p>
+                                                    <p className="text-sm text-zinc-800 dark:text-zinc-200 truncate">{cmd.label}</p>
                                                     {cmd.description && (
                                                         <p className="text-xs text-zinc-600 truncate">{cmd.description}</p>
                                                     )}
                                                 </div>
-                                                <ArrowRight size={12} className="text-zinc-700 group-hover:text-zinc-400 transition-colors" />
+                                                <ArrowRight size={12} className="text-zinc-700 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors" />
                                             </button>
                                         ))}
                                 </div>
@@ -148,10 +148,10 @@ export function CommandBar() {
                     </div>
 
                     {/* Footer */}
-                    <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center gap-4 text-[10px] text-zinc-600">
-                        <span className="flex items-center gap-1.5"><kbd className="bg-zinc-800 px-1 rounded font-mono">↑↓</kbd> Navigate</span>
-                        <span className="flex items-center gap-1.5"><kbd className="bg-zinc-800 px-1 rounded font-mono">↵</kbd> Select</span>
-                        <span className="flex items-center gap-1.5"><Command size={9} /><kbd className="bg-zinc-800 px-1 rounded font-mono">K</kbd> Toggle</span>
+                    <div className="px-4 py-2.5 border-t border-zinc-200 dark:border-zinc-800 flex items-center gap-4 text-[10px] text-zinc-600">
+                        <span className="flex items-center gap-1.5"><kbd className="bg-zinc-100 dark:bg-zinc-800 px-1 rounded font-mono">↑↓</kbd> Navigate</span>
+                        <span className="flex items-center gap-1.5"><kbd className="bg-zinc-100 dark:bg-zinc-800 px-1 rounded font-mono">↵</kbd> Select</span>
+                        <span className="flex items-center gap-1.5"><Command size={9} /><kbd className="bg-zinc-100 dark:bg-zinc-800 px-1 rounded font-mono">K</kbd> Toggle</span>
                     </div>
                 </motion.div>
             </motion.div>
