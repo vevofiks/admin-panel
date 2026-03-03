@@ -4,6 +4,8 @@ import Product from "@/core/models/Product";
 import Variant from "@/core/models/Variant";
 import "@/core/models/Category";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(
     req: Request,
     { params }: { params: Promise<{ id: string }> }

@@ -3,6 +3,8 @@ import dbConnect from "@/lib/mongoose";
 import Variant from "@/core/models/Variant";
 import Product from "@/core/models/Product";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request) {
     try {
         await dbConnect();

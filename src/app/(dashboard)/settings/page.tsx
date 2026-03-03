@@ -217,7 +217,6 @@ export default function SettingsPage() {
                     {[
                         { label: "New Order Alerts", desc: "Get notified when new orders come in", value: notifyOrders, set: setNotifyOrders },
                         { label: "Low Stock Warnings", desc: "Alert when product stock falls below threshold", value: notifyLowStock, set: setNotifyLowStock },
-                        { label: "New Customer Registrations", desc: "Notify on new customer sign-ups", value: notifyCustomers, set: setNotifyCustomers },
                     ].map(({ label, desc, value, set }) => (
                         <div key={label} className="flex items-center justify-between gap-4">
                             <div>

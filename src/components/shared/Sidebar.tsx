@@ -59,12 +59,11 @@ export function Sidebar() {
                                 transition={{ duration: 0.2 }}
                                 className="min-w-0"
                             >
-                                <span className="font-semibold text-sm text-zinc-50 tracking-tight whitespace-nowrap">
+                                <span className="font-semibold text-sm text-zinc-900 dark:text-zinc-50 tracking-tight whitespace-nowrap">
                                     {branding.appName}
                                 </span>
-                                <p className="text-[10px] text-zinc-500 whitespace-nowrap">
-                                    {branding.tagline}
-                                </p>
+                                <p className="text-xs text-zinc-500 truncate">{branding.tagline}</p>
+
                             </motion.div>
                         </AnimatePresence>
                     )}

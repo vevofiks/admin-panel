@@ -46,6 +46,7 @@ export const useUIStore = create<UIState>()(
                 const updatedStores = get().stores.map((s) =>
                     s.id === storeId ? { ...s, ...patch } : s
                 );
+
                 const updatedActive =
                     get().activeStore.id === storeId
                         ? { ...get().activeStore, ...patch }

@@ -4,6 +4,8 @@ import Product from "@/core/models/Product";
 import "@/core/models/Category"; // ensure Category is registered
 import "@/core/models/Variant"; // ensure Variant is registered
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
     try {
         await dbConnect();
